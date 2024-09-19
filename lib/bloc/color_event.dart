@@ -7,12 +7,16 @@ part 'color_event.freezed.dart';
 /// an immutable state management solution.
 @freezed
 // ignore: prefer_match_file_name
-class ColorEvent  with _$ColorEvent {
+class ColorEvent with _$ColorEvent {
   /// Factory constructor for initializing the color page state.
   factory ColorEvent.init() = ColorEventInit;
 
   /// Factory constructor for triggering a color change event.
   factory ColorEvent.changeColor() = ChangeColorEvent;
+
+  /// Factory constructor for updating timer value.
+  const factory ColorEvent.updateTimerIntervalEvent(int interval) = UpdateTimerIntervalEvent;
+
 
   /// Factory constructor for triggering automatically color change event.
   factory ColorEvent.autoChangeColorEvent() = AutoChangeColorEvent ;
@@ -23,4 +27,3 @@ class ColorEvent  with _$ColorEvent {
   /// Factory constructor for triggering a color change event.
   factory ColorEvent.clickForSurprise() = ClickForSupriseEvent;
 }
-

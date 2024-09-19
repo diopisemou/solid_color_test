@@ -63,7 +63,7 @@ class ColorChangingScreen extends StatelessWidget {
                           fontSize: 16,
                           color: state.textColor,
                         ),
-                      ),
+                      )
                     ],
                   ),
                 ),
@@ -99,7 +99,25 @@ class ColorChangingScreen extends StatelessWidget {
                                 .read<ColorBloc>()
                                 .add(ColorEvent.enableAutoChangeColorEvent());
                               },
-                            )
+                            ),
+                            const SizedBox(width: 8),
+                      DropdownButton<int>(
+                        value: state.selectedInterval,
+                        hint: const Text("Select Interval"),
+                        items: [1, 5, 10, 30, 60].map((int value) {
+                          return DropdownMenuItem<int>(
+                            value: value,
+                            child: Text("$value seconds"),
+                          );
+                        }).toList(),
+                        onChanged: (int? newValue) {
+                          
+                          // Dispatch an event with the new interval
+                          context
+                              .read<ColorBloc>()
+                              .add(ColorEvent.updateTimerIntervalEvent(newValue!));
+                        },
+                      ),
                           ],
                         ),
                       ),

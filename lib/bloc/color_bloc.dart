@@ -1,118 +1,136 @@
 import 'dart:async';
+import 'dart:ui';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solid_color_test/bloc/color_event.dart';
 import 'package:solid_color_test/bloc/color_state.dart';
 import 'package:solid_color_test/utils/color_utils.dart';
 
 class ColorBloc extends Bloc<ColorEvent, ColorState> {
-  Timer? timer;
+  StreamSubscription<dynamic>? _autoChangeTimer;
 
-  /// Constructor for `ColorBloc`.
-  ///
-  /// Initializes the bloc with an initial state. It also defines event handlers
-  /// for various types of `ColorEvent`. The `ColorEvent.init()` event is added
-  /// to the event stream to trigger the initialization logic immediately
-  /// after the bloc is created.
   ColorBloc() : super(ColorState.data()) {
     on<ColorEventInit>(_onInit);
     on<ChangeColorEvent>(_changeColor);
-    on<AutoChangeColorEvent>(_autoChangeColor);
+    on<UpdateTimerIntervalEvent>(_updateTimerIntervalEvent);
+    on<AutoChangeColorEvent>(_autoChangeColorEvent);
     on<EnableAutoChangeColorEvent>(_enableAutoColorChange);
     on<ClickForSupriseEvent>(_clickForSurprise);
+
+    // Initialize the bloc
     add(ColorEvent.init());
-    add(ColorEvent.autoChangeColorEvent());
   }
 
-  Future<void> _onInit(
-    ColorEventInit _,
-    Emitter<ColorState> emit,
-  ) async {
-    emit(
-      state.data.copyWith(
-        isLoading: true,
-      ),
-    );
-    emit(
-      state.data.copyWith(
-        isLoading: false,
-        triggerColorChange: false,
-        greetMessage: "Hello there",
-        colorPageTile: "Solid Random Color App",
-      ),
-    );
+  Future<void> _onInit(ColorEventInit event, Emitter<ColorState> emit) async {
+    // Show loading state
+    emit(state.copyWith(isLoading: true));
+
+    // Simulate some initialization work
+    await Future.delayed(const Duration(milliseconds: 500));
+
+    // Update state with initial values
+    emit(state.copyWith(
+      isLoading: false,
+      triggerColorChange: false,
+      greetMessage: "Hello there",
+      colorPageTile: "Solid Random Color App",
+    ));
   }
 
-  Future<void> _changeColor(
-    ChangeColorEvent _,
-    Emitter<ColorState> emit,
-  ) async {
-    _updateColor(emit);
-    emit(
-      state.data.copyWith(greetMessage: 'Hello there'),
-    );
+  void _changeColor(ChangeColorEvent event, Emitter<ColorState> emit) {
+    _updateColorState(emit, "Hello there");
   }
 
-  Future<void> _clickForSurprise(
-    ClickForSupriseEvent _,
-    Emitter<ColorState> emit,
-  ) async {
-    _updateColor(emit);
-    emit(
-      state.data.copyWith(greetMessage: 'Surprise! A new color has appeared.'),
-    );
+  void _clickForSurprise(ClickForSupriseEvent event, Emitter<ColorState> emit) {
+    _updateColorState(emit, "Surprise! A new color has appeared.");
   }
 
-  void _updateColor(Emitter<ColorState> emit) {
-    var backgroundColor = ColorUtils.getRandomColor();
-    var textColor = ColorUtils.getRandomColor();
+  void _autoChangeColorEvent(
+      AutoChangeColorEvent event, Emitter<ColorState> emit) {
+    _updateColorState(emit, "Hello there - Color Changed Automatically");
+    print('Auto color change occurred');
+  }
 
-    while (!ColorUtils.hasSufficientContrast(backgroundColor, textColor)) {
-      backgroundColor = ColorUtils.getRandomColor();
-      textColor = ColorUtils.getRandomColor();
+  void _enableAutoColorChange(
+      EnableAutoChangeColorEvent event, Emitter<ColorState> emit) async {
+    final shouldEnableAutoChange = !state.triggerColorChange;
+
+    // Emit the new state first
+    emit(state.copyWith(triggerColorChange: shouldEnableAutoChange));
+
+    if (shouldEnableAutoChange) {
+      await _startAutoColorChange(emit); // Await the function
+      print('Auto color change enabled');
+    } else {
+      _stopAutoColorChange();
+      print('Auto color change disabled');
     }
-
-    emit(
-      state.data.copyWith(
-        backgroundColor: backgroundColor,
-        textColor: textColor,
-      ),
-    );
   }
 
-  Future<void> _enableAutoColorChange(
-  EnableAutoChangeColorEvent _,
-  Emitter<ColorState> emit,
-) async {
-  // First, update the state to reflect the change in triggerColorChange
-  emit(
-    state.data.copyWith(
-      triggerColorChange: !state.triggerColorChange,
-    ),
-  );
-  if (state.triggerColorChange) {
-    // If triggerColorChange is now true, start the timer
-    _autoChangeColor(AutoChangeColorEvent(), emit); 
-  } else {
-    // If triggerColorChange is now false, cancel the timer
-    timer?.cancel();
-  }
-}
+  Future<void> _updateTimerIntervalEvent(
+      UpdateTimerIntervalEvent event, Emitter<ColorState> emit) async {
+    emit(state.copyWith(
+      selectedInterval: event.interval,
+      triggerColorChange: state.triggerColorChange,
+    ));
 
-  Future<void> _autoChangeColor(
-  AutoChangeColorEvent _,
-  Emitter<ColorState> emit,
-) async {
-  timer?.cancel();
-  timer = null;
-  timer = Timer.periodic(const Duration(seconds: 2), (timer) {
-    if (state.triggerColorChange && !emit.isDone) {
-      _updateColor(emit); // Call directly
-      emit(
-        state.data.copyWith(
-          greetMessage: 'Hello there - Color Changed Automatically',
-        ),
-      );
+    if (state.triggerColorChange) {
+      await _startAutoColorChange(emit); // Await the function
+      print('Auto color change enabled and timer updated');
+    } else {
+      _stopAutoColorChange();
+      print('Auto color change disabled');
     }
-  });
-}
+  }
+
+  Future<void> _startAutoColorChange(Emitter<ColorState> emit) async {
+    _stopAutoColorChange(); // Ensure any existing timer is cancelled
+
+    // Trigger an immediate color change
+    _updateColorState(emit, "Hello There - Auto color change started");
+
+    // Use a local variable to manage the ongoing stream
+    _autoChangeTimer =
+        Stream.periodic(Duration(seconds: state.selectedInterval))
+            .listen((timer) async {
+      if (_autoChangeTimer != null) {
+        // Ensure the timer is still active
+        // Emit within an async context to ensure we respect the handler's lifecycle
+        await Future.microtask(() {
+          add(ColorEvent.autoChangeColorEvent());
+        });
+      }
+    });
+  }
+
+  void _stopAutoColorChange() {
+    _autoChangeTimer?.cancel();
+    _autoChangeTimer = null;
+    print('Auto color change timer stopped');
+  }
+
+// Assuming this method exists in your class
+  void _updateColorState(Emitter<ColorState> emit, String message) {
+    Color newBackgroundColor, newTextColor;
+
+    do {
+      newBackgroundColor = ColorUtils.getRandomColor();
+      newTextColor = ColorUtils.getRandomColor();
+    } while (
+        !ColorUtils.hasSufficientContrast(newBackgroundColor, newTextColor));
+
+    emit(state.copyWith(
+      backgroundColor: newBackgroundColor,
+      textColor: newTextColor,
+      greetMessage: message,
+    ));
+
+    print(
+        'Color state updated: BG=${newBackgroundColor.value.toRadixString(16)}, Text=${newTextColor.value.toRadixString(16)}');
+  }
+
+  @override
+  Future<void> close() {
+    _stopAutoColorChange();
+    return super.close();
+  }
 }

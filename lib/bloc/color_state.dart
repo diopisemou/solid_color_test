@@ -22,6 +22,7 @@ class ColorState  with _$ColorState {
   /// with default values if not specified
   ///
   factory ColorState.data({
+    @Default(5) int selectedInterval,
     @Default(Colors.white) Color backgroundColor,
     @Default(Colors.black) Color textColor,
     @Default(false) bool isLoading,

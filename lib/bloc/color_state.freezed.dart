@@ -16,6 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ColorState {
+  int get selectedInterval => throw _privateConstructorUsedError;
   Color get backgroundColor => throw _privateConstructorUsedError;
   Color get textColor => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
@@ -25,6 +26,7 @@ mixin _$ColorState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
+            int selectedInterval,
             Color backgroundColor,
             Color textColor,
             bool isLoading,
@@ -36,15 +38,27 @@ mixin _$ColorState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Color backgroundColor, Color textColor, bool isLoading,
-            bool triggerColorChange, String greetMessage, String colorPageTile)?
+    TResult? Function(
+            int selectedInterval,
+            Color backgroundColor,
+            Color textColor,
+            bool isLoading,
+            bool triggerColorChange,
+            String greetMessage,
+            String colorPageTile)?
         data,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Color backgroundColor, Color textColor, bool isLoading,
-            bool triggerColorChange, String greetMessage, String colorPageTile)?
+    TResult Function(
+            int selectedInterval,
+            Color backgroundColor,
+            Color textColor,
+            bool isLoading,
+            bool triggerColorChange,
+            String greetMessage,
+            String colorPageTile)?
         data,
     required TResult orElse(),
   }) =>
@@ -80,7 +94,8 @@ abstract class $ColorStateCopyWith<$Res> {
       _$ColorStateCopyWithImpl<$Res, ColorState>;
   @useResult
   $Res call(
-      {Color backgroundColor,
+      {int selectedInterval,
+      Color backgroundColor,
       Color textColor,
       bool isLoading,
       bool triggerColorChange,
@@ -103,6 +118,7 @@ class _$ColorStateCopyWithImpl<$Res, $Val extends ColorState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? selectedInterval = null,
     Object? backgroundColor = null,
     Object? textColor = null,
     Object? isLoading = null,
@@ -111,6 +127,10 @@ class _$ColorStateCopyWithImpl<$Res, $Val extends ColorState>
     Object? colorPageTile = null,
   }) {
     return _then(_value.copyWith(
+      selectedInterval: null == selectedInterval
+          ? _value.selectedInterval
+          : selectedInterval // ignore: cast_nullable_to_non_nullable
+              as int,
       backgroundColor: null == backgroundColor
           ? _value.backgroundColor
           : backgroundColor // ignore: cast_nullable_to_non_nullable
@@ -148,7 +168,8 @@ abstract class _$$ColorStateDataImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {Color backgroundColor,
+      {int selectedInterval,
+      Color backgroundColor,
       Color textColor,
       bool isLoading,
       bool triggerColorChange,
@@ -169,6 +190,7 @@ class __$$ColorStateDataImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? selectedInterval = null,
     Object? backgroundColor = null,
     Object? textColor = null,
     Object? isLoading = null,
@@ -177,6 +199,10 @@ class __$$ColorStateDataImplCopyWithImpl<$Res>
     Object? colorPageTile = null,
   }) {
     return _then(_$ColorStateDataImpl(
+      selectedInterval: null == selectedInterval
+          ? _value.selectedInterval
+          : selectedInterval // ignore: cast_nullable_to_non_nullable
+              as int,
       backgroundColor: null == backgroundColor
           ? _value.backgroundColor
           : backgroundColor // ignore: cast_nullable_to_non_nullable
@@ -209,7 +235,8 @@ class __$$ColorStateDataImplCopyWithImpl<$Res>
 
 class _$ColorStateDataImpl extends ColorStateData {
   _$ColorStateDataImpl(
-      {this.backgroundColor = Colors.white,
+      {this.selectedInterval = 5,
+      this.backgroundColor = Colors.white,
       this.textColor = Colors.black,
       this.isLoading = false,
       this.triggerColorChange = false,
@@ -217,6 +244,9 @@ class _$ColorStateDataImpl extends ColorStateData {
       this.colorPageTile = 'Solid Random Color App'})
       : super._();
 
+  @override
+  @JsonKey()
+  final int selectedInterval;
   @override
   @JsonKey()
   final Color backgroundColor;
@@ -236,6 +266,43 @@ class _$ColorStateDataImpl extends ColorStateData {
   @JsonKey()
   final String colorPageTile;
 
+  @override
+  String toString() {
+    return 'ColorState.data(selectedInterval: $selectedInterval, backgroundColor: $backgroundColor, textColor: $textColor, isLoading: $isLoading, triggerColorChange: $triggerColorChange, greetMessage: $greetMessage, colorPageTile: $colorPageTile)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ColorStateDataImpl &&
+            (identical(other.selectedInterval, selectedInterval) ||
+                other.selectedInterval == selectedInterval) &&
+            (identical(other.backgroundColor, backgroundColor) ||
+                other.backgroundColor == backgroundColor) &&
+            (identical(other.textColor, textColor) ||
+                other.textColor == textColor) &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading) &&
+            (identical(other.triggerColorChange, triggerColorChange) ||
+                other.triggerColorChange == triggerColorChange) &&
+            (identical(other.greetMessage, greetMessage) ||
+                other.greetMessage == greetMessage) &&
+            (identical(other.colorPageTile, colorPageTile) ||
+                other.colorPageTile == colorPageTile));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      selectedInterval,
+      backgroundColor,
+      textColor,
+      isLoading,
+      triggerColorChange,
+      greetMessage,
+      colorPageTile);
+
   /// Create a copy of ColorState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -249,6 +316,7 @@ class _$ColorStateDataImpl extends ColorStateData {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
+            int selectedInterval,
             Color backgroundColor,
             Color textColor,
             bool isLoading,
@@ -257,32 +325,44 @@ class _$ColorStateDataImpl extends ColorStateData {
             String colorPageTile)
         data,
   }) {
-    return data(backgroundColor, textColor, isLoading, triggerColorChange,
-        greetMessage, colorPageTile);
+    return data(selectedInterval, backgroundColor, textColor, isLoading,
+        triggerColorChange, greetMessage, colorPageTile);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Color backgroundColor, Color textColor, bool isLoading,
-            bool triggerColorChange, String greetMessage, String colorPageTile)?
+    TResult? Function(
+            int selectedInterval,
+            Color backgroundColor,
+            Color textColor,
+            bool isLoading,
+            bool triggerColorChange,
+            String greetMessage,
+            String colorPageTile)?
         data,
   }) {
-    return data?.call(backgroundColor, textColor, isLoading, triggerColorChange,
-        greetMessage, colorPageTile);
+    return data?.call(selectedInterval, backgroundColor, textColor, isLoading,
+        triggerColorChange, greetMessage, colorPageTile);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Color backgroundColor, Color textColor, bool isLoading,
-            bool triggerColorChange, String greetMessage, String colorPageTile)?
+    TResult Function(
+            int selectedInterval,
+            Color backgroundColor,
+            Color textColor,
+            bool isLoading,
+            bool triggerColorChange,
+            String greetMessage,
+            String colorPageTile)?
         data,
     required TResult orElse(),
   }) {
     if (data != null) {
-      return data(backgroundColor, textColor, isLoading, triggerColorChange,
-          greetMessage, colorPageTile);
+      return data(selectedInterval, backgroundColor, textColor, isLoading,
+          triggerColorChange, greetMessage, colorPageTile);
     }
     return orElse();
   }
@@ -318,7 +398,8 @@ class _$ColorStateDataImpl extends ColorStateData {
 
 abstract class ColorStateData extends ColorState {
   factory ColorStateData(
-      {final Color backgroundColor,
+      {final int selectedInterval,
+      final Color backgroundColor,
       final Color textColor,
       final bool isLoading,
       final bool triggerColorChange,
@@ -326,6 +407,8 @@ abstract class ColorStateData extends ColorState {
       final String colorPageTile}) = _$ColorStateDataImpl;
   ColorStateData._() : super._();
 
+  @override
+  int get selectedInterval;
   @override
   Color get backgroundColor;
   @override

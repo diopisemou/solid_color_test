@@ -20,6 +20,7 @@ mixin _$ColorEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() changeColor,
+    required TResult Function(int interval) updateTimerIntervalEvent,
     required TResult Function() autoChangeColorEvent,
     required TResult Function() enableAutoChangeColorEvent,
     required TResult Function() clickForSurprise,
@@ -29,6 +30,7 @@ mixin _$ColorEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? changeColor,
+    TResult? Function(int interval)? updateTimerIntervalEvent,
     TResult? Function()? autoChangeColorEvent,
     TResult? Function()? enableAutoChangeColorEvent,
     TResult? Function()? clickForSurprise,
@@ -38,6 +40,7 @@ mixin _$ColorEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? changeColor,
+    TResult Function(int interval)? updateTimerIntervalEvent,
     TResult Function()? autoChangeColorEvent,
     TResult Function()? enableAutoChangeColorEvent,
     TResult Function()? clickForSurprise,
@@ -48,6 +51,8 @@ mixin _$ColorEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(ColorEventInit value) init,
     required TResult Function(ChangeColorEvent value) changeColor,
+    required TResult Function(UpdateTimerIntervalEvent value)
+        updateTimerIntervalEvent,
     required TResult Function(AutoChangeColorEvent value) autoChangeColorEvent,
     required TResult Function(EnableAutoChangeColorEvent value)
         enableAutoChangeColorEvent,
@@ -58,6 +63,7 @@ mixin _$ColorEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ColorEventInit value)? init,
     TResult? Function(ChangeColorEvent value)? changeColor,
+    TResult? Function(UpdateTimerIntervalEvent value)? updateTimerIntervalEvent,
     TResult? Function(AutoChangeColorEvent value)? autoChangeColorEvent,
     TResult? Function(EnableAutoChangeColorEvent value)?
         enableAutoChangeColorEvent,
@@ -68,6 +74,7 @@ mixin _$ColorEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ColorEventInit value)? init,
     TResult Function(ChangeColorEvent value)? changeColor,
+    TResult Function(UpdateTimerIntervalEvent value)? updateTimerIntervalEvent,
     TResult Function(AutoChangeColorEvent value)? autoChangeColorEvent,
     TResult Function(EnableAutoChangeColorEvent value)?
         enableAutoChangeColorEvent,
@@ -141,6 +148,7 @@ class _$ColorEventInitImpl implements ColorEventInit {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() changeColor,
+    required TResult Function(int interval) updateTimerIntervalEvent,
     required TResult Function() autoChangeColorEvent,
     required TResult Function() enableAutoChangeColorEvent,
     required TResult Function() clickForSurprise,
@@ -153,6 +161,7 @@ class _$ColorEventInitImpl implements ColorEventInit {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? changeColor,
+    TResult? Function(int interval)? updateTimerIntervalEvent,
     TResult? Function()? autoChangeColorEvent,
     TResult? Function()? enableAutoChangeColorEvent,
     TResult? Function()? clickForSurprise,
@@ -165,6 +174,7 @@ class _$ColorEventInitImpl implements ColorEventInit {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? changeColor,
+    TResult Function(int interval)? updateTimerIntervalEvent,
     TResult Function()? autoChangeColorEvent,
     TResult Function()? enableAutoChangeColorEvent,
     TResult Function()? clickForSurprise,
@@ -181,6 +191,8 @@ class _$ColorEventInitImpl implements ColorEventInit {
   TResult map<TResult extends Object?>({
     required TResult Function(ColorEventInit value) init,
     required TResult Function(ChangeColorEvent value) changeColor,
+    required TResult Function(UpdateTimerIntervalEvent value)
+        updateTimerIntervalEvent,
     required TResult Function(AutoChangeColorEvent value) autoChangeColorEvent,
     required TResult Function(EnableAutoChangeColorEvent value)
         enableAutoChangeColorEvent,
@@ -194,6 +206,7 @@ class _$ColorEventInitImpl implements ColorEventInit {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ColorEventInit value)? init,
     TResult? Function(ChangeColorEvent value)? changeColor,
+    TResult? Function(UpdateTimerIntervalEvent value)? updateTimerIntervalEvent,
     TResult? Function(AutoChangeColorEvent value)? autoChangeColorEvent,
     TResult? Function(EnableAutoChangeColorEvent value)?
         enableAutoChangeColorEvent,
@@ -207,6 +220,7 @@ class _$ColorEventInitImpl implements ColorEventInit {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ColorEventInit value)? init,
     TResult Function(ChangeColorEvent value)? changeColor,
+    TResult Function(UpdateTimerIntervalEvent value)? updateTimerIntervalEvent,
     TResult Function(AutoChangeColorEvent value)? autoChangeColorEvent,
     TResult Function(EnableAutoChangeColorEvent value)?
         enableAutoChangeColorEvent,
@@ -267,6 +281,7 @@ class _$ChangeColorEventImpl implements ChangeColorEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() changeColor,
+    required TResult Function(int interval) updateTimerIntervalEvent,
     required TResult Function() autoChangeColorEvent,
     required TResult Function() enableAutoChangeColorEvent,
     required TResult Function() clickForSurprise,
@@ -279,6 +294,7 @@ class _$ChangeColorEventImpl implements ChangeColorEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? changeColor,
+    TResult? Function(int interval)? updateTimerIntervalEvent,
     TResult? Function()? autoChangeColorEvent,
     TResult? Function()? enableAutoChangeColorEvent,
     TResult? Function()? clickForSurprise,
@@ -291,6 +307,7 @@ class _$ChangeColorEventImpl implements ChangeColorEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? changeColor,
+    TResult Function(int interval)? updateTimerIntervalEvent,
     TResult Function()? autoChangeColorEvent,
     TResult Function()? enableAutoChangeColorEvent,
     TResult Function()? clickForSurprise,
@@ -307,6 +324,8 @@ class _$ChangeColorEventImpl implements ChangeColorEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(ColorEventInit value) init,
     required TResult Function(ChangeColorEvent value) changeColor,
+    required TResult Function(UpdateTimerIntervalEvent value)
+        updateTimerIntervalEvent,
     required TResult Function(AutoChangeColorEvent value) autoChangeColorEvent,
     required TResult Function(EnableAutoChangeColorEvent value)
         enableAutoChangeColorEvent,
@@ -320,6 +339,7 @@ class _$ChangeColorEventImpl implements ChangeColorEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ColorEventInit value)? init,
     TResult? Function(ChangeColorEvent value)? changeColor,
+    TResult? Function(UpdateTimerIntervalEvent value)? updateTimerIntervalEvent,
     TResult? Function(AutoChangeColorEvent value)? autoChangeColorEvent,
     TResult? Function(EnableAutoChangeColorEvent value)?
         enableAutoChangeColorEvent,
@@ -333,6 +353,7 @@ class _$ChangeColorEventImpl implements ChangeColorEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ColorEventInit value)? init,
     TResult Function(ChangeColorEvent value)? changeColor,
+    TResult Function(UpdateTimerIntervalEvent value)? updateTimerIntervalEvent,
     TResult Function(AutoChangeColorEvent value)? autoChangeColorEvent,
     TResult Function(EnableAutoChangeColorEvent value)?
         enableAutoChangeColorEvent,
@@ -348,6 +369,179 @@ class _$ChangeColorEventImpl implements ChangeColorEvent {
 
 abstract class ChangeColorEvent implements ColorEvent {
   factory ChangeColorEvent() = _$ChangeColorEventImpl;
+}
+
+/// @nodoc
+abstract class _$$UpdateTimerIntervalEventImplCopyWith<$Res> {
+  factory _$$UpdateTimerIntervalEventImplCopyWith(
+          _$UpdateTimerIntervalEventImpl value,
+          $Res Function(_$UpdateTimerIntervalEventImpl) then) =
+      __$$UpdateTimerIntervalEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int interval});
+}
+
+/// @nodoc
+class __$$UpdateTimerIntervalEventImplCopyWithImpl<$Res>
+    extends _$ColorEventCopyWithImpl<$Res, _$UpdateTimerIntervalEventImpl>
+    implements _$$UpdateTimerIntervalEventImplCopyWith<$Res> {
+  __$$UpdateTimerIntervalEventImplCopyWithImpl(
+      _$UpdateTimerIntervalEventImpl _value,
+      $Res Function(_$UpdateTimerIntervalEventImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ColorEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? interval = null,
+  }) {
+    return _then(_$UpdateTimerIntervalEventImpl(
+      null == interval
+          ? _value.interval
+          : interval // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UpdateTimerIntervalEventImpl implements UpdateTimerIntervalEvent {
+  const _$UpdateTimerIntervalEventImpl(this.interval);
+
+  @override
+  final int interval;
+
+  @override
+  String toString() {
+    return 'ColorEvent.updateTimerIntervalEvent(interval: $interval)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateTimerIntervalEventImpl &&
+            (identical(other.interval, interval) ||
+                other.interval == interval));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, interval);
+
+  /// Create a copy of ColorEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateTimerIntervalEventImplCopyWith<_$UpdateTimerIntervalEventImpl>
+      get copyWith => __$$UpdateTimerIntervalEventImplCopyWithImpl<
+          _$UpdateTimerIntervalEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() changeColor,
+    required TResult Function(int interval) updateTimerIntervalEvent,
+    required TResult Function() autoChangeColorEvent,
+    required TResult Function() enableAutoChangeColorEvent,
+    required TResult Function() clickForSurprise,
+  }) {
+    return updateTimerIntervalEvent(interval);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? changeColor,
+    TResult? Function(int interval)? updateTimerIntervalEvent,
+    TResult? Function()? autoChangeColorEvent,
+    TResult? Function()? enableAutoChangeColorEvent,
+    TResult? Function()? clickForSurprise,
+  }) {
+    return updateTimerIntervalEvent?.call(interval);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? changeColor,
+    TResult Function(int interval)? updateTimerIntervalEvent,
+    TResult Function()? autoChangeColorEvent,
+    TResult Function()? enableAutoChangeColorEvent,
+    TResult Function()? clickForSurprise,
+    required TResult orElse(),
+  }) {
+    if (updateTimerIntervalEvent != null) {
+      return updateTimerIntervalEvent(interval);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ColorEventInit value) init,
+    required TResult Function(ChangeColorEvent value) changeColor,
+    required TResult Function(UpdateTimerIntervalEvent value)
+        updateTimerIntervalEvent,
+    required TResult Function(AutoChangeColorEvent value) autoChangeColorEvent,
+    required TResult Function(EnableAutoChangeColorEvent value)
+        enableAutoChangeColorEvent,
+    required TResult Function(ClickForSupriseEvent value) clickForSurprise,
+  }) {
+    return updateTimerIntervalEvent(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ColorEventInit value)? init,
+    TResult? Function(ChangeColorEvent value)? changeColor,
+    TResult? Function(UpdateTimerIntervalEvent value)? updateTimerIntervalEvent,
+    TResult? Function(AutoChangeColorEvent value)? autoChangeColorEvent,
+    TResult? Function(EnableAutoChangeColorEvent value)?
+        enableAutoChangeColorEvent,
+    TResult? Function(ClickForSupriseEvent value)? clickForSurprise,
+  }) {
+    return updateTimerIntervalEvent?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ColorEventInit value)? init,
+    TResult Function(ChangeColorEvent value)? changeColor,
+    TResult Function(UpdateTimerIntervalEvent value)? updateTimerIntervalEvent,
+    TResult Function(AutoChangeColorEvent value)? autoChangeColorEvent,
+    TResult Function(EnableAutoChangeColorEvent value)?
+        enableAutoChangeColorEvent,
+    TResult Function(ClickForSupriseEvent value)? clickForSurprise,
+    required TResult orElse(),
+  }) {
+    if (updateTimerIntervalEvent != null) {
+      return updateTimerIntervalEvent(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UpdateTimerIntervalEvent implements ColorEvent {
+  const factory UpdateTimerIntervalEvent(final int interval) =
+      _$UpdateTimerIntervalEventImpl;
+
+  int get interval;
+
+  /// Create a copy of ColorEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UpdateTimerIntervalEventImplCopyWith<_$UpdateTimerIntervalEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -394,6 +588,7 @@ class _$AutoChangeColorEventImpl implements AutoChangeColorEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() changeColor,
+    required TResult Function(int interval) updateTimerIntervalEvent,
     required TResult Function() autoChangeColorEvent,
     required TResult Function() enableAutoChangeColorEvent,
     required TResult Function() clickForSurprise,
@@ -406,6 +601,7 @@ class _$AutoChangeColorEventImpl implements AutoChangeColorEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? changeColor,
+    TResult? Function(int interval)? updateTimerIntervalEvent,
     TResult? Function()? autoChangeColorEvent,
     TResult? Function()? enableAutoChangeColorEvent,
     TResult? Function()? clickForSurprise,
@@ -418,6 +614,7 @@ class _$AutoChangeColorEventImpl implements AutoChangeColorEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? changeColor,
+    TResult Function(int interval)? updateTimerIntervalEvent,
     TResult Function()? autoChangeColorEvent,
     TResult Function()? enableAutoChangeColorEvent,
     TResult Function()? clickForSurprise,
@@ -434,6 +631,8 @@ class _$AutoChangeColorEventImpl implements AutoChangeColorEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(ColorEventInit value) init,
     required TResult Function(ChangeColorEvent value) changeColor,
+    required TResult Function(UpdateTimerIntervalEvent value)
+        updateTimerIntervalEvent,
     required TResult Function(AutoChangeColorEvent value) autoChangeColorEvent,
     required TResult Function(EnableAutoChangeColorEvent value)
         enableAutoChangeColorEvent,
@@ -447,6 +646,7 @@ class _$AutoChangeColorEventImpl implements AutoChangeColorEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ColorEventInit value)? init,
     TResult? Function(ChangeColorEvent value)? changeColor,
+    TResult? Function(UpdateTimerIntervalEvent value)? updateTimerIntervalEvent,
     TResult? Function(AutoChangeColorEvent value)? autoChangeColorEvent,
     TResult? Function(EnableAutoChangeColorEvent value)?
         enableAutoChangeColorEvent,
@@ -460,6 +660,7 @@ class _$AutoChangeColorEventImpl implements AutoChangeColorEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ColorEventInit value)? init,
     TResult Function(ChangeColorEvent value)? changeColor,
+    TResult Function(UpdateTimerIntervalEvent value)? updateTimerIntervalEvent,
     TResult Function(AutoChangeColorEvent value)? autoChangeColorEvent,
     TResult Function(EnableAutoChangeColorEvent value)?
         enableAutoChangeColorEvent,
@@ -523,6 +724,7 @@ class _$EnableAutoChangeColorEventImpl implements EnableAutoChangeColorEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() changeColor,
+    required TResult Function(int interval) updateTimerIntervalEvent,
     required TResult Function() autoChangeColorEvent,
     required TResult Function() enableAutoChangeColorEvent,
     required TResult Function() clickForSurprise,
@@ -535,6 +737,7 @@ class _$EnableAutoChangeColorEventImpl implements EnableAutoChangeColorEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? changeColor,
+    TResult? Function(int interval)? updateTimerIntervalEvent,
     TResult? Function()? autoChangeColorEvent,
     TResult? Function()? enableAutoChangeColorEvent,
     TResult? Function()? clickForSurprise,
@@ -547,6 +750,7 @@ class _$EnableAutoChangeColorEventImpl implements EnableAutoChangeColorEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? changeColor,
+    TResult Function(int interval)? updateTimerIntervalEvent,
     TResult Function()? autoChangeColorEvent,
     TResult Function()? enableAutoChangeColorEvent,
     TResult Function()? clickForSurprise,
@@ -563,6 +767,8 @@ class _$EnableAutoChangeColorEventImpl implements EnableAutoChangeColorEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(ColorEventInit value) init,
     required TResult Function(ChangeColorEvent value) changeColor,
+    required TResult Function(UpdateTimerIntervalEvent value)
+        updateTimerIntervalEvent,
     required TResult Function(AutoChangeColorEvent value) autoChangeColorEvent,
     required TResult Function(EnableAutoChangeColorEvent value)
         enableAutoChangeColorEvent,
@@ -576,6 +782,7 @@ class _$EnableAutoChangeColorEventImpl implements EnableAutoChangeColorEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ColorEventInit value)? init,
     TResult? Function(ChangeColorEvent value)? changeColor,
+    TResult? Function(UpdateTimerIntervalEvent value)? updateTimerIntervalEvent,
     TResult? Function(AutoChangeColorEvent value)? autoChangeColorEvent,
     TResult? Function(EnableAutoChangeColorEvent value)?
         enableAutoChangeColorEvent,
@@ -589,6 +796,7 @@ class _$EnableAutoChangeColorEventImpl implements EnableAutoChangeColorEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ColorEventInit value)? init,
     TResult Function(ChangeColorEvent value)? changeColor,
+    TResult Function(UpdateTimerIntervalEvent value)? updateTimerIntervalEvent,
     TResult Function(AutoChangeColorEvent value)? autoChangeColorEvent,
     TResult Function(EnableAutoChangeColorEvent value)?
         enableAutoChangeColorEvent,
@@ -650,6 +858,7 @@ class _$ClickForSupriseEventImpl implements ClickForSupriseEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() changeColor,
+    required TResult Function(int interval) updateTimerIntervalEvent,
     required TResult Function() autoChangeColorEvent,
     required TResult Function() enableAutoChangeColorEvent,
     required TResult Function() clickForSurprise,
@@ -662,6 +871,7 @@ class _$ClickForSupriseEventImpl implements ClickForSupriseEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? changeColor,
+    TResult? Function(int interval)? updateTimerIntervalEvent,
     TResult? Function()? autoChangeColorEvent,
     TResult? Function()? enableAutoChangeColorEvent,
     TResult? Function()? clickForSurprise,
@@ -674,6 +884,7 @@ class _$ClickForSupriseEventImpl implements ClickForSupriseEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? changeColor,
+    TResult Function(int interval)? updateTimerIntervalEvent,
     TResult Function()? autoChangeColorEvent,
     TResult Function()? enableAutoChangeColorEvent,
     TResult Function()? clickForSurprise,
@@ -690,6 +901,8 @@ class _$ClickForSupriseEventImpl implements ClickForSupriseEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(ColorEventInit value) init,
     required TResult Function(ChangeColorEvent value) changeColor,
+    required TResult Function(UpdateTimerIntervalEvent value)
+        updateTimerIntervalEvent,
     required TResult Function(AutoChangeColorEvent value) autoChangeColorEvent,
     required TResult Function(EnableAutoChangeColorEvent value)
         enableAutoChangeColorEvent,
@@ -703,6 +916,7 @@ class _$ClickForSupriseEventImpl implements ClickForSupriseEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ColorEventInit value)? init,
     TResult? Function(ChangeColorEvent value)? changeColor,
+    TResult? Function(UpdateTimerIntervalEvent value)? updateTimerIntervalEvent,
     TResult? Function(AutoChangeColorEvent value)? autoChangeColorEvent,
     TResult? Function(EnableAutoChangeColorEvent value)?
         enableAutoChangeColorEvent,
@@ -716,6 +930,7 @@ class _$ClickForSupriseEventImpl implements ClickForSupriseEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ColorEventInit value)? init,
     TResult Function(ChangeColorEvent value)? changeColor,
+    TResult Function(UpdateTimerIntervalEvent value)? updateTimerIntervalEvent,
     TResult Function(AutoChangeColorEvent value)? autoChangeColorEvent,
     TResult Function(EnableAutoChangeColorEvent value)?
         enableAutoChangeColorEvent,
