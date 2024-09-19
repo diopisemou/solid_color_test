@@ -7,7 +7,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:solid_color_test/main.dart';
+import 'package:solid_color_test/app/solid_random_color_app.dart';
 
 
 void main() {
