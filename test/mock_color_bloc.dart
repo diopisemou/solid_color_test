@@ -8,11 +8,13 @@ class MockColorBloc extends MockBloc<ColorEvent, ColorState>
     implements ColorBloc {}
 
 void main() {
-  late ColorBloc colorBloc;
+  const selectedInterval = 30;
+  ColorBloc colorBloc = MockColorBloc();
 
   setUp(() {
     colorBloc = ColorBloc();
   });
+
   tearDown(() async {
     await colorBloc.close(); // Ensure the bloc is closed
   });
@@ -71,7 +73,7 @@ void main() {
       expect: () => [
         // Verify state change with the new interval
         colorBloc.state.copyWith(
-          selectedInterval: 30,
+          selectedInterval: selectedInterval,
           // Add properties that would change based on your implementation
         ),
       ],

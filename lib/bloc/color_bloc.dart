@@ -87,7 +87,12 @@ class ColorBloc extends Bloc<ColorEvent, ColorState> {
     _autoChangeTimer =
         Stream.periodic(Duration(seconds: state.selectedInterval))
             .listen((_) async {
-      if (_autoChangeTimer == null) return;
+      if (_autoChangeTimer == null) {
+        _stopAutoColorChange();
+
+        return;
+      }
+      ;
       // Ensure the timer is still active
       // Emit within an async context to ensure we respect the handler's lifecycle
       await Future.microtask(() {
