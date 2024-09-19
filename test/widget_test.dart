@@ -7,24 +7,26 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
 import 'package:solid_color_test/main.dart';
 
+
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+  testWidgets('Color change  smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+    await tester.pumpWidget(const SolidRandomColorApp());
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    // Verify that our initial text didn't change as we haven't tapped the '*' icon.
+    expect(find.text('Hello there'), findsOneWidget);
+    expect(find.text('Surprise! A new color has appeared.'), findsNothing);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
+    // Tap the '*' icon and trigger a frame.
+    await tester.tap(find.byIcon(Icons.star));
     await tester.pump();
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    // Verify that our text changed as we tapped the '*' icon.
+    expect(find.text('Hello there'), findsNothing);
+    expect(find.text('Surprise! A new color has appeared.'), findsOneWidget);
+
+    print('Test executed successfully');
   });
 }
