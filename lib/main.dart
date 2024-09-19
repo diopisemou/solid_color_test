@@ -1,12 +1,14 @@
 import 'dart:math';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(const SolidRandomColorApp());
 }
 
-// SolidRandomColorApp class
+/// SolidRandomColorApp class
 class SolidRandomColorApp extends StatelessWidget {
+  /// Constructor for SolidRandomColorApp
   const SolidRandomColorApp({super.key});
 
   @override
@@ -18,29 +20,40 @@ class SolidRandomColorApp extends StatelessWidget {
       );
 }
 
-// ColorChangingScreen class
+/// ColorChangingScreen class
 class ColorChangingScreen extends StatefulWidget {
+  /// Constructor for ColorChangingScreen
   const ColorChangingScreen({required this.title, super.key});
 
-  //Title property for the color changing page
+
+  ///Title property for the color changing page
   final String title;
   @override
   State<ColorChangingScreen> createState() => _ColorChangingScreenState();
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(StringProperty('title', title));
+  }
 }
 
 class _ColorChangingScreenState extends State<ColorChangingScreen> {
+  /// Maximum color value for RGB
   static const int _maxColorValue = 256;
+  /// Initial greet message
   static String _greetMessage = 'Hello there';
+  /// Initial background color
   Color _backgroundColor = Colors.white;
 
-// Helper function to change the background color
+  /// Helper function to change the background color
   void _changeBackgroundColor() {
     setState(() {
       _backgroundColor = _generateRandomColor();
     });
   }
 
-  // Generate a random color using RGB values
+  /// Generate a random color using RGB values
   Color _generateRandomColor() {
     final random = Random();
 
@@ -52,7 +65,7 @@ class _ColorChangingScreenState extends State<ColorChangingScreen> {
     );
   }
 
-  // Determine text color based on background brightness for better contrast
+  /// Determine text color based on background brightness for better contrast
   Color _getTextColor(Color backgroundColor) =>
       backgroundColor.computeLuminance() > 0.5 ? Colors.black : Colors.white;
 
