@@ -91,14 +91,14 @@ class ColorBloc extends Bloc<ColorEvent, ColorState> {
     // Use a local variable to manage the ongoing stream
     _autoChangeTimer =
         Stream.periodic(Duration(seconds: state.selectedInterval))
-            .listen((timer) async {
-      if (_autoChangeTimer != null) {
+            .listen((_) async {
+      if (_autoChangeTimer == null) return;
         // Ensure the timer is still active
         // Emit within an async context to ensure we respect the handler's lifecycle
         await Future.microtask(() {
           add(ColorEvent.autoChangeColorEvent());
         });
-      }
+      
     });
   }
 
@@ -124,13 +124,12 @@ class ColorBloc extends Bloc<ColorEvent, ColorState> {
       greetMessage: message,
     ));
 
-    print(
-        'Color state updated: BG=${newBackgroundColor.value.toRadixString(16)}, Text=${newTextColor.value.toRadixString(16)}');
   }
 
   @override
   Future<void> close() {
     _stopAutoColorChange();
+
     return super.close();
   }
 }

@@ -21,6 +21,7 @@ class ColorChangingScreen extends StatelessWidget {
             ),
           );
         }
+
         return GestureDetector(
             onTap: () =>
                 context.read<ColorBloc>().add(ColorEvent.changeColor()),
@@ -94,7 +95,7 @@ class ColorChangingScreen extends StatelessWidget {
                             CupertinoSwitch(
                               trackColor: Colors.black,
                               value: state.triggerColorChange,
-                              onChanged: (bool value) {
+                              onChanged: (_) {
                                 context
                                 .read<ColorBloc>()
                                 .add(ColorEvent.enableAutoChangeColorEvent());
@@ -111,11 +112,13 @@ class ColorChangingScreen extends StatelessWidget {
                           );
                         }).toList(),
                         onChanged: (int? newValue) {
-                          
+                          if (newValue == null) return;
+                            
                           // Dispatch an event with the new interval
                           context
                               .read<ColorBloc>()
-                              .add(ColorEvent.updateTimerIntervalEvent(newValue!));
+                              .add(ColorEvent
+                              .updateTimerIntervalEvent(newValue),);
                         },
                       ),
                           ],

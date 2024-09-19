@@ -20,7 +20,7 @@ class SolidRandomColorApp extends StatelessWidget {
     return ScreenUtilInit(
       designSize: const Size(375, 812),
       minTextAdapt: true,
-      builder: (context, child) {
+      builder: (_, __) {
         return BlocProvider(
           create: (_) => ColorBloc(),
           child: MaterialApp(
