@@ -4,15 +4,13 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'color_state.freezed.dart';
 
-
 /// Represents the state of the color page.
 /// Includes properties for background color, text color, and loading status.
 /// It leverages freezed for immutable state management.
 @freezed
-class ColorState  with _$ColorState {
+class ColorState with _$ColorState {
   /// Getter to retrieve the data state of the color page.
   ColorStateData get data => this as ColorStateData;
-
 
   /// Internal constructor for creating state instances.
   const ColorState._();
@@ -31,6 +29,3 @@ class ColorState  with _$ColorState {
     @Default('Solid Random Color App') String colorPageTile,
   }) = ColorStateData;
 }
-
-
-

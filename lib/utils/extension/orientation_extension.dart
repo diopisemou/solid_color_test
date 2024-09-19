@@ -5,7 +5,6 @@ import 'package:flutter/services.dart';
 /// This extension provides utility methods to easily lock and unlock
 /// the device orientation in different modes (vertical, horizontal, or both).
 extension OrientationExtension on SystemChrome {
-
   /// Locks the screen orientation to vertical.
   ///
   /// This method sets the preferred orientations to portrait mode only,
@@ -32,9 +31,9 @@ extension OrientationExtension on SystemChrome {
   /// This method resets the preferred orientations, allowing the device
   /// to automatically rotate and adapt to both portrait and landscape modes.
   static Future<void> unlock() async => SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-    DeviceOrientation.portraitDown,
-    DeviceOrientation.landscapeLeft,
-    DeviceOrientation.landscapeRight,
-  ]);
+        DeviceOrientation.portraitUp,
+        DeviceOrientation.portraitDown,
+        DeviceOrientation.landscapeLeft,
+        DeviceOrientation.landscapeRight,
+      ]);
 }

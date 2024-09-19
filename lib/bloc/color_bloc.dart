@@ -47,7 +47,6 @@ class ColorBloc extends Bloc<ColorEvent, ColorState> {
   void _autoChangeColorEvent(
       AutoChangeColorEvent event, Emitter<ColorState> emit) {
     _updateColorState(emit, "Hello there - Color Changed Automatically");
-    print('Auto color change occurred');
   }
 
   void _enableAutoColorChange(
@@ -59,10 +58,8 @@ class ColorBloc extends Bloc<ColorEvent, ColorState> {
 
     if (shouldEnableAutoChange) {
       await _startAutoColorChange(emit); // Await the function
-      print('Auto color change enabled');
     } else {
       _stopAutoColorChange();
-      print('Auto color change disabled');
     }
   }
 
@@ -75,10 +72,8 @@ class ColorBloc extends Bloc<ColorEvent, ColorState> {
 
     if (state.triggerColorChange) {
       await _startAutoColorChange(emit); // Await the function
-      print('Auto color change enabled and timer updated');
     } else {
       _stopAutoColorChange();
-      print('Auto color change disabled');
     }
   }
 
@@ -93,19 +88,12 @@ class ColorBloc extends Bloc<ColorEvent, ColorState> {
         Stream.periodic(Duration(seconds: state.selectedInterval))
             .listen((_) async {
       if (_autoChangeTimer == null) return;
-        // Ensure the timer is still active
-        // Emit within an async context to ensure we respect the handler's lifecycle
-        await Future.microtask(() {
-          add(ColorEvent.autoChangeColorEvent());
-        });
-      
+      // Ensure the timer is still active
+      // Emit within an async context to ensure we respect the handler's lifecycle
+      await Future.microtask(() {
+        add(ColorEvent.autoChangeColorEvent());
+      });
     });
-  }
-
-  void _stopAutoColorChange() {
-    _autoChangeTimer?.cancel();
-    _autoChangeTimer = null;
-    print('Auto color change timer stopped');
   }
 
 // Assuming this method exists in your class
@@ -123,12 +111,16 @@ class ColorBloc extends Bloc<ColorEvent, ColorState> {
       textColor: newTextColor,
       greetMessage: message,
     ));
+  }
 
+  void _stopAutoColorChange() {
+    _autoChangeTimer?.cancel();
+    _autoChangeTimer = null;
   }
 
   @override
   Future<void> close() {
-    _stopAutoColorChange();
+    _stopAutoColorChange(); // Ensure the timer is stopped
 
     return super.close();
   }

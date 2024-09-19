@@ -44,12 +44,13 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   
+  bloc_test: ^9.1.7
   build_runner: ^2.4.8
   flutter_lints: ^4.0.0
   flutter_test:
     sdk: flutter
-
   freezed: ^2.4.7
+  mocktail: ^0.3.0
   solid_lints: ^0.2.2
 
 # For information on the generic Dart part of this file, see the

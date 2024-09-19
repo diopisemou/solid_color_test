@@ -7,4 +7,3 @@ Future<void> main() async {
   await OrientationExtension.lockVertical();
   runApp(const SolidRandomColorApp());
 }
-

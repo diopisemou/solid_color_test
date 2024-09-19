@@ -15,7 +15,7 @@ class SolidRandomColorApp extends StatelessWidget {
   /// Constructor for SolidRandomColorApp
   const SolidRandomColorApp({super.key});
 
-@override
+  @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: const Size(375, 812),
@@ -26,13 +26,14 @@ class SolidRandomColorApp extends StatelessWidget {
           child: MaterialApp(
             debugShowCheckedModeBanner: false,
             title: 'Solid Random Color App',
-            theme: ThemeData(primarySwatch: Colors.blue,
-            useMaterial3: true,),
+            theme: ThemeData(
+              primarySwatch: Colors.blue,
+              useMaterial3: true,
+            ),
             home: const ColorChangingScreen(),
-      ),
+          ),
         );
       },
     );
   }
-
 }

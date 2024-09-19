@@ -15,14 +15,14 @@ class ColorEvent with _$ColorEvent {
   factory ColorEvent.changeColor() = ChangeColorEvent;
 
   /// Factory constructor for updating timer value.
-  const factory ColorEvent.updateTimerIntervalEvent(int interval) = UpdateTimerIntervalEvent;
-
+  const factory ColorEvent.updateTimerIntervalEvent(int interval) =
+      UpdateTimerIntervalEvent;
 
   /// Factory constructor for triggering automatically color change event.
-  factory ColorEvent.autoChangeColorEvent() = AutoChangeColorEvent ;
+  factory ColorEvent.autoChangeColorEvent() = AutoChangeColorEvent;
 
   /// Factory constructor for triggering a color change event.
-  factory ColorEvent.enableAutoChangeColorEvent() = EnableAutoChangeColorEvent ;
+  factory ColorEvent.enableAutoChangeColorEvent() = EnableAutoChangeColorEvent;
 
   /// Factory constructor for triggering a color change event.
   factory ColorEvent.clickForSurprise() = ClickForSupriseEvent;

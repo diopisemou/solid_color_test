@@ -56,7 +56,7 @@ class ColorChangingScreen extends StatelessWidget {
                               ),
                             ),
                           )),
-                     SizedBox(height: 20),
+                      SizedBox(height: 20),
                       Text(
                         'RGB: (${state.textColor.red}, '
                         '${state.textColor.green}, ${state.textColor.blue})',
@@ -96,31 +96,30 @@ class ColorChangingScreen extends StatelessWidget {
                               trackColor: Colors.black,
                               value: state.triggerColorChange,
                               onChanged: (_) {
-                                context
-                                .read<ColorBloc>()
-                                .add(ColorEvent.enableAutoChangeColorEvent());
+                                context.read<ColorBloc>().add(
+                                    ColorEvent.enableAutoChangeColorEvent());
                               },
                             ),
                             const SizedBox(width: 8),
-                      DropdownButton<int>(
-                        value: state.selectedInterval,
-                        hint: const Text("Select Interval"),
-                        items: [1, 5, 10, 30, 60].map((int value) {
-                          return DropdownMenuItem<int>(
-                            value: value,
-                            child: Text("$value seconds"),
-                          );
-                        }).toList(),
-                        onChanged: (int? newValue) {
-                          if (newValue == null) return;
-                            
-                          // Dispatch an event with the new interval
-                          context
-                              .read<ColorBloc>()
-                              .add(ColorEvent
-                              .updateTimerIntervalEvent(newValue),);
-                        },
-                      ),
+                            DropdownButton<int>(
+                              value: state.selectedInterval,
+                              hint: const Text("Select Interval"),
+                              items: [1, 5, 10, 30, 60].map((int value) {
+                                return DropdownMenuItem<int>(
+                                  value: value,
+                                  child: Text("$value seconds"),
+                                );
+                              }).toList(),
+                              onChanged: (int? newValue) {
+                                if (newValue == null) return;
+
+                                // Dispatch an event with the new interval
+                                context.read<ColorBloc>().add(
+                                      ColorEvent.updateTimerIntervalEvent(
+                                          newValue),
+                                    );
+                              },
+                            ),
                           ],
                         ),
                       ),
